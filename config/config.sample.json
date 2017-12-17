@@ -1,0 +1,36 @@
+{
+	"development": {
+		"serverHost": "localhost",
+		"serverPort": 3000,
+		"connections": {
+			"postgres": {
+				"adapter": "postgresql",
+				"host": "localhost",
+				"user": "postgres",
+				"password": "password",
+				"port": 5433,
+				"database": "postgres"
+			},
+			"sqlserver": {
+				"adapter": "sqlserver",
+				"user": "sqlserverUser",
+				"password": "password",
+				"server": "sqlserverDb.database.windows.net",
+				"database": "sqlserverDb",
+				"options": {
+					"encrypt": true
+				}
+			},
+			"mssqlserver": {
+				"adapter": "sails-mssqlserver",
+				"user": "sqlserverUser",
+				"password": "password",
+				"host": "sqlserverDb.database.windows.net",
+				"database": "sqlserverDb",
+				"options": {
+					"encrypt": true
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,24 @@
+#!/usr/bin/env node
+'use strict';
+
+const env = process.env.NODE_ENV || 'development',
+	config = require('./../config/config.json')[env],
+	models = require('./../api/models');
+
+models.waterline.initialize(models.config, function (err, models) {
+	if (err) {
+        throw err;
+	}
+	
+	var app = require('./../server');
+	global.Models = app.models = models.collections;
+	app.connections = models.connections;
+
+	app.set('port', process.env.PORT || config.serverPort);
+
+	// Start Server
+	app.listen(app.get('port'), () => {
+		console.log(`Express server listening on port ${app.get('port')}`);
+	});
+	
+});
